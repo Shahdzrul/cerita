@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#111;
+height:100vh;
+overflow:hidden;
+font-family:sans-serif;
+}
+
+.top{
+background:#181818;
+padding:10px;
+display:flex;
+gap:10px;
+}
+
+button{
+padding:10px 14px;
+border:none;
+border-radius:10px;
+background:#2a2a2a;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#444;
+}
+
+iframe{
+width:100%;
+height:calc(100vh - 60px);
+border:none;
+transition:.35s;
+}
+
+.stream-mode{
+position:fixed;
+top:0;
+left:0;
+width:100vw !important;
+height:100vh !important;
+z-index:9999;
+background:black;
+}
+
+.exit{
+position:fixed;
+top:12px;
+right:12px;
+z-index:10000;
+display:none;
+}
+
+.stream-mode + .exit{
+display:block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="top">
+
+<button onclick="changeSite('https://hurawatch.cx/home')">
+Hurawatch
+</button>
+
+<button onclick="changeSite('https://7reels.cc/')">
+7Reels
+</button>
+
+<button onclick="changeSite('https://gogoanime.or.at/')">
+GogoAnime
+</button>
+
+<button onclick="toggleStream()">
+📺 Stream
+</button>
+
+</div>
+
+<iframe
+id="viewer"
+allowfullscreen>
+</iframe>
+
+<button
+class="exit"
+id="closeBtn"
+onclick="toggleStream()">
+✕ Tutup
+</button>
+
+<script>
+
+const viewer=
+document.getElementById("viewer");
+
+const closeBtn=
+document.getElementById("closeBtn");
+
+function changeSite(url){
+viewer.src=url;
+}
+
+function toggleStream(){
+
+viewer.classList.toggle(
+"stream-mode"
+);
+
+closeBtn.style.display=
+viewer.classList.contains(
+"stream-mode"
+)
+? "block"
+: "none";
+
+}
+
+changeSite(
+"https://hurawatch.cx/home"
+);
+
+</script>
+
+</body>
+
+</html>
