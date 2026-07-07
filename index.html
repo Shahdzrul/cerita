@@ -25,6 +25,7 @@ background:#181818;
 padding:10px;
 display:flex;
 gap:10px;
+overflow-x:auto;
 }
 
 button{
@@ -34,6 +35,7 @@ border-radius:10px;
 background:#2a2a2a;
 color:white;
 cursor:pointer;
+white-space:nowrap;
 }
 
 button:hover{
@@ -89,6 +91,10 @@ Hurawatch
 GogoAnime
 </button>
 
+<button onclick="changeSite('https://9animes.ro/')">
+9Anime
+</button>
+
 <button onclick="toggleStream()">
 📺 Stream
 </button>
@@ -109,34 +115,29 @@ onclick="toggleStream()">
 
 <script>
 
-const viewer=
+const viewer =
 document.getElementById("viewer");
 
-const closeBtn=
+const closeBtn =
 document.getElementById("closeBtn");
 
 function changeSite(url){
-viewer.src=url;
+viewer.src = url;
 }
 
 function toggleStream(){
 
-viewer.classList.toggle(
-"stream-mode"
-);
+viewer.classList.toggle("stream-mode");
 
-closeBtn.style.display=
-viewer.classList.contains(
-"stream-mode"
-)
+closeBtn.style.display =
+viewer.classList.contains("stream-mode")
 ? "block"
 : "none";
 
 }
 
-changeSite(
-"https://hurawatch.cx/home"
-);
+// Laman dibuka secara automatik
+changeSite("https://hurawatch.cx/home");
 
 </script>
 
